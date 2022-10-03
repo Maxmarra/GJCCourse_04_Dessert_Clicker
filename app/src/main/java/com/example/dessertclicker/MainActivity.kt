@@ -1,18 +1,3 @@
-/*
- * Copyright (C) 2022 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 package com.example.dessertclicker
 
 import android.content.ActivityNotFoundException
@@ -76,10 +61,7 @@ class MainActivity : ComponentActivity() {
 /**
  * Determine which dessert to show.
  */
-fun determineDessertToShow(
-    desserts: List<Dessert>,
-    dessertsSold: Int
-): Dessert {
+fun determineDessertToShow(desserts: List<Dessert>, dessertsSold: Int): Dessert {
     var dessertToShow = desserts.first()
     for (dessert in desserts) {
         if (dessertsSold >= dessert.startProductionAmount) {
@@ -130,14 +112,14 @@ private fun DessertClickerApp(
     var revenue by remember { mutableStateOf(0) }
     var dessertsSold by remember { mutableStateOf(0) }
 
+    //чтобы получить доступ к данным первого десерта
     val currentDessertIndex by remember { mutableStateOf(0) }
 
-    var currentDessertPrice by remember {
-        mutableStateOf(desserts[currentDessertIndex].price)
-    }
-    var currentDessertImageId by remember {
-        mutableStateOf(desserts[currentDessertIndex].imageId)
-    }
+    //получаем цену и id картинки у первого десерта
+    //дальше в коде уже будем получать непосредственно десерт и у него
+    //вызывать свойста цены и id картинки уже без индекса
+    var currentDessertPrice by remember { mutableStateOf(desserts[currentDessertIndex].price)}
+    var currentDessertImageId by remember { mutableStateOf(desserts[currentDessertIndex].imageId)}
 
     Scaffold(
         topBar = {
@@ -158,7 +140,6 @@ private fun DessertClickerApp(
             dessertsSold = dessertsSold,
             dessertImageId = currentDessertImageId,
             onDessertClicked = {
-
                 // Update the revenue
                 revenue += currentDessertPrice
                 dessertsSold++
@@ -170,9 +151,11 @@ private fun DessertClickerApp(
             },
             modifier = Modifier.padding(contentPadding)
         )
+
     }
 }
 
+//верхний блок
 @Composable
 private fun AppBar(
     onShareButtonClicked: () -> Unit,
@@ -204,6 +187,7 @@ private fun AppBar(
     }
 }
 
+//Средний блок
 @Composable
 fun DessertClickerScreen(
     revenue: Int,
@@ -236,10 +220,12 @@ fun DessertClickerScreen(
                 )
             }
             TransactionInfo(revenue = revenue, dessertsSold = dessertsSold)
+
         }
     }
 }
 
+//нижный блок
 @Composable
 private fun TransactionInfo(
     revenue: Int,
@@ -254,29 +240,10 @@ private fun TransactionInfo(
         RevenueInfo(revenue)
     }
 }
-
 @Composable
-private fun RevenueInfo(revenue: Int, modifier: Modifier = Modifier) {
-    Row(
-        modifier = modifier
-            .fillMaxWidth()
-            .padding(16.dp),
-        horizontalArrangement = Arrangement.SpaceBetween,
-    ) {
-        Text(
-            text = stringResource(R.string.total_revenue),
-            style = MaterialTheme.typography.h4
-        )
-        Text(
-            text = "$${revenue}",
-            textAlign = TextAlign.Right,
-            style = MaterialTheme.typography.h4
-        )
-    }
-}
-
-@Composable
-private fun DessertsSoldInfo(dessertsSold: Int, modifier: Modifier = Modifier) {
+private fun DessertsSoldInfo(
+    dessertsSold: Int,
+    modifier: Modifier = Modifier) {
     Row(
         modifier = modifier
             .fillMaxWidth()
@@ -293,6 +260,29 @@ private fun DessertsSoldInfo(dessertsSold: Int, modifier: Modifier = Modifier) {
         )
     }
 }
+
+@Composable
+private fun RevenueInfo(
+    revenue: Int,
+    modifier: Modifier = Modifier) {
+    Row(
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(16.dp),
+        horizontalArrangement = Arrangement.SpaceBetween,
+    ) {
+        Text(
+            text = stringResource(R.string.total_revenue),
+            style = MaterialTheme.typography.h4
+        )
+        Text(
+            text = "₽${revenue}",
+            textAlign = TextAlign.Right,
+            style = MaterialTheme.typography.h4
+        )
+    }
+}
+
 
 @Preview
 @Composable
