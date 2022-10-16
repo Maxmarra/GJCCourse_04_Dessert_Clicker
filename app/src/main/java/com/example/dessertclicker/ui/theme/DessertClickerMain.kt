@@ -20,15 +20,18 @@ fun DessertClickerMain(
     onDessertClicked: () -> Unit = {},
     modifier: Modifier = Modifier
 ) {
-    Box(modifier = modifier) {
+    Box(modifier = modifier,
+        contentAlignment = Alignment.Center
+    ) {
         Image(
-            painter = painterResource(R.drawable.bakery_back),
+            painter = painterResource(R.drawable.back),
             contentDescription = null,
             contentScale = ContentScale.Crop
         )
         Box(
             modifier = Modifier
                 .fillMaxWidth(),
+
         ) {
             Image(
                 painter = painterResource(dessertImageId),

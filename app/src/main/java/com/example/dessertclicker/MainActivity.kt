@@ -65,6 +65,6 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun MyDessertClickerAppPreview() {
     DessertClickerTheme {
-        DessertClickerApp(listOf(Dessert(R.drawable.cupcake, 5, 0)))
+        DessertClickerApp(dessertList)
     }
 }
