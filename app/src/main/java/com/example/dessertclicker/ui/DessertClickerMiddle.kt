@@ -1,4 +1,4 @@
-package com.example.dessertclicker.ui.theme
+package com.example.dessertclicker.ui
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
@@ -12,6 +12,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.dessertclicker.R
+import com.example.dessertclicker.ui.theme.DessertClickerTheme
 
 //средний блок экрана - фото дессерта, фон экрана
 @Composable

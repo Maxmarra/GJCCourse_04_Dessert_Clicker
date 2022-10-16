@@ -1,4 +1,4 @@
-package com.example.dessertclicker.ui.theme
+package com.example.dessertclicker.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -12,6 +12,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.dessertclicker.R
+import com.example.dessertclicker.ui.theme.DessertClickerTheme
 
 //нижный блок экрана - кол-во, итого
 @Composable

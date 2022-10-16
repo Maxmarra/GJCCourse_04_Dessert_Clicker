@@ -1,12 +1,17 @@
-package com.example.dessertclicker.ui.theme
+package com.example.dessertclicker.ui
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.dessertclicker.data.Datasource
 import com.example.dessertclicker.model.Dessert
+import com.example.dessertclicker.ui.theme.AppBarTop
+import com.example.dessertclicker.ui.theme.DessertClickerMiddle
+import com.example.dessertclicker.ui.theme.DessertClickerTheme
+import com.example.dessertclicker.ui.theme.TransactionInfoBottom
 import com.example.dessertclicker.utils.determineDessertToShow
 
 //место где мы вызываем, собираем созданные компоненты
@@ -14,7 +19,10 @@ import com.example.dessertclicker.utils.determineDessertToShow
 fun DessertClickerApp(
     desserts: List<Dessert>
 ) {
-    var revenue by remember { mutableStateOf(0) }
+    //сохраняет данные при изменении конфигурации
+    var revenue by rememberSaveable{ mutableStateOf(0) }
+
+    //НЕ сохраняет данные при изменении конфигурации
     var dessertsSold by remember { mutableStateOf(0) }
 
     //чтобы получить доступ к данным первого десерта
