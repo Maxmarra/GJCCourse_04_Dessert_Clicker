@@ -28,7 +28,7 @@ fun DessertClickerApp(
 
     Scaffold(
         topBar = {
-            AppBar()
+            AppBarTop()
         }
     ) { contentPadding ->
         Column(
@@ -36,7 +36,7 @@ fun DessertClickerApp(
 
         ) {
             Box (modifier = Modifier.weight(1F)){
-                DessertClickerMain(
+                DessertClickerMiddle(
 
                     dessertImageId = currentDessertImageId,
                     onDessertClicked = {
@@ -53,7 +53,7 @@ fun DessertClickerApp(
                 )
             }
 
-            TransactionInfo(revenue = revenue, dessertsSold = dessertsSold)
+            TransactionInfoBottom(revenue = revenue, dessertsSold = dessertsSold)
         }
 
     }

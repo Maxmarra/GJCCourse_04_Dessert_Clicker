@@ -15,7 +15,7 @@ import com.example.dessertclicker.R
 
 //средний блок экрана - фото дессерта, фон экрана
 @Composable
-fun DessertClickerMain(
+fun DessertClickerMiddle(
     @DrawableRes dessertImageId: Int,
     onDessertClicked: () -> Unit = {},
     modifier: Modifier = Modifier
@@ -49,9 +49,9 @@ fun DessertClickerMain(
 
 @Preview
 @Composable
-fun DessertClickerMainPreview() {
+fun DessertClickerMiddlePreview() {
     DessertClickerTheme {
-        DessertClickerMain(
+        DessertClickerMiddle(
             dessertImageId = R.drawable.cupcake
         )
     }

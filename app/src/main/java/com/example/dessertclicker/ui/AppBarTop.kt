@@ -14,11 +14,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.dessertclicker.R
-import com.example.dessertclicker.model.Dessert
 
 //верхний блок - панель приложения
 @Composable
-fun AppBar(
+fun AppBarTop(
     modifier: Modifier = Modifier
 ) {
     Row(
@@ -41,6 +40,6 @@ fun AppBar(
 @Composable
 fun AppBarAppPreview() {
     DessertClickerTheme {
-        AppBar()
+        AppBarTop()
     }
 }
