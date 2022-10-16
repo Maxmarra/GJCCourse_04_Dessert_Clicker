@@ -199,7 +199,7 @@ fun DessertClickerScreen(
 ) {
     Box(modifier = modifier) {
         Image(
-            painter = painterResource(R.drawable.bakery_back),
+            painter = painterResource(R.drawable.back),
             contentDescription = null,
             contentScale = ContentScale.Crop
         )
