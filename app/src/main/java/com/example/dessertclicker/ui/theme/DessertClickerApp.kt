@@ -1,5 +1,6 @@
 package com.example.dessertclicker.ui.theme
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -36,21 +37,23 @@ fun DessertClickerApp(
         Column(
             modifier = Modifier.fillMaxSize()
         ) {
-            DessertClickerMain(
+            Box (modifier = Modifier.weight(1F)){
+                DessertClickerMain(
 
-                dessertImageId = currentDessertImageId,
-                onDessertClicked = {
-                    // Update the revenue
-                    revenue += currentDessertPrice
-                    dessertsSold++
+                    dessertImageId = currentDessertImageId,
+                    onDessertClicked = {
+                        // Update the revenue
+                        revenue += currentDessertPrice
+                        dessertsSold++
 
-                    // Show the next dessert
-                    val dessertToShow = determineDessertToShow(desserts, dessertsSold)
-                    currentDessertImageId = dessertToShow.imageId
-                    currentDessertPrice = dessertToShow.price
-                },
-                modifier = Modifier.padding(contentPadding)
-            )
+                        // Show the next dessert
+                        val dessertToShow = determineDessertToShow(desserts, dessertsSold)
+                        currentDessertImageId = dessertToShow.imageId
+                        currentDessertPrice = dessertToShow.price
+                    },
+                    modifier = Modifier.padding(contentPadding)
+                )
+            }
 
             TransactionInfo(revenue = revenue, dessertsSold = dessertsSold)
         }
